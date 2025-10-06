@@ -62,10 +62,12 @@ jobs:
           pmbootstrap export
           cp /tmp/postmarketOS-export/boot.img out/boot-xiaomi-tianma-alioth.img
           cp /tmp/postmarketOS-export/xiaomi-alioth.img out/rootfs-xiaomi-alioth.img
+          tar -cvf package.tar out/*-alioth.img*
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: xiaomi-alioth-plasma-mobile
-          path: out/*-alioth.img*
+          path: package.tar
+          compression-level: 9
           retention-days: 7
